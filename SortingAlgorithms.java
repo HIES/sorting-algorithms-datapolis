@@ -1,11 +1,16 @@
 public class SortingAlgorithms
 {
+    public static void swap(int a, int b, int[] array){
+        int temp = array[b];
+        array[b]=array[a];
+        array[a]=temp;
+    }
     public static void bubbleSort(int[] nums)
     {
         int currentInd = 0;
         int nextInd = 1;
         int moves = 0;
-        do 
+        do
         {
             if(nextInd == nums.length)
             {
@@ -22,28 +27,39 @@ public class SortingAlgorithms
             }
             currentInd++;
             nextInd++;
-            
-         
-            
-       }
-        while(moves != 0);
-        
-        System.out.println("done with bubble");
-        
-       
-        
-        
-    }
 
+
+        }
+        while(moves != 0);
+
+        System.out.println("done with bubble");
+
+
+    }
     public static void selectionSort(int[] nums)
     {
-        //for(
-        //find min or something lol
-    
+        for(int i = 0;i<nums.length-1;i++){
+            int min = i;
+
+            for(int x = i+1; x<nums.length; x++){
+                if(nums[i]<nums[min]){
+                    min = nums[i];
+                }
+            }
+            if(min != i){
+                swap(min, i, nums);
+            }
+        }
     }
 
+
+
     public static void insertionSort(int[] nums)
-    {}
+    {
+        for(int i=0;i<nums.length;i++){
+            
+        }
+    }
 
     // A helper method for you to check if your sorts work
     private static boolean isSorted(int[] nums){
@@ -87,24 +103,27 @@ public class SortingAlgorithms
     }
 
     // Use main for testing and timing your sorts
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
-        int[] testArray = generateReversedArray(100);
+        int[] testArray = generateReversedArray(10);
 
         printArray(testArray);
 
-        System.out.println("Applying the bubble sort.");
+        System.out.println("Applying the Selection sort.");
 
         long start = System.currentTimeMillis();
         bubbleSort(testArray);
         long end = System.currentTimeMillis();
-        double sortTime = (end - start) / 1000.0; 
-        
-        bubbleSort(testArray);
+        double sortTime = (end - start) / 1000.0;
+
+        selectionSort(testArray);
 
         printArray(testArray);
         System.out.println(isSorted(testArray));
 
         System.out.format("Time to complete took %.4f seconds.%n", sortTime);
+
+
+
     }
 }
