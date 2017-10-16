@@ -42,7 +42,7 @@ public class SortingAlgorithms
             int min = i;
 
             for(int x = i+1; x<nums.length; x++){
-                if(nums[i]<nums[min]){
+                if(nums[x]<nums[min]){
                     min = nums[i];
                 }
             }
