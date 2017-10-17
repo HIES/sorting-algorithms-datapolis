@@ -56,8 +56,12 @@ public class SortingAlgorithms
 
     public static void insertionSort(int[] nums)
     {
-        for(int i=0;i<nums.length;i++){
-            
+        for(int p=0;p<nums.length;p++){
+            for(int x = 0;x<=p;x++){
+                if(nums[p]<nums[x]){
+                    swap(p,x,nums);
+                }
+            }
         }
     }
 
@@ -109,19 +113,19 @@ public class SortingAlgorithms
 
         printArray(testArray);
 
-        System.out.println("Applying the Selection sort.");
 
-        long start = System.currentTimeMillis();
-        bubbleSort(testArray);
-        long end = System.currentTimeMillis();
-        double sortTime = (end - start) / 1000.0;
 
+        /*long start = System.currentTimeMillis();
         selectionSort(testArray);
+        long end = System.currentTimeMillis();
+        double sortTime = (end - start) / 1000.0;*/
+
+       insertionSort(testArray);
 
         printArray(testArray);
         System.out.println(isSorted(testArray));
 
-        System.out.format("Time to complete took %.4f seconds.%n", sortTime);
+        //System.out.format("Time to complete took %.4f seconds.%n", sortTime);
 
 
 
